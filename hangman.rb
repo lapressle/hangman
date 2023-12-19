@@ -9,3 +9,16 @@ dictionary.each do |word|
 end
 
 puts word_options
+
+# defines hangman word
+class Word
+  attr_reader :word
+
+  def initialize(word)
+    @word = word
+  end
+end
+
+def pick_word(list)
+  Word.new(rand(0..list.length))
+end
