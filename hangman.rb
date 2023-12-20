@@ -31,7 +31,8 @@ class Game
     word.split('').length.times { @status += '_' }
   end
 
-  def compare_guess(guess)
+  def compare_guess
+    guess = player.guess
     word.each_char.with_index do |letter, index|
       status[index] = guess if letter == guess
     end
@@ -41,11 +42,21 @@ end
 
 # defines Player ability to guess
 class Player
-  def initialize; end
+  attr_accessor :guesses
+
+  def initialize
+    @guesses = []
+  end
 
   def guess
     p 'Pick a letter'
-    gets.chomp
+    input = gets.chomp
+    until input.is_a?(String) && !guesses.include?(input)
+      p 'try again'
+      input = gets.chomp
+    end
+    guesses << input
+    input
   end
 end
 
@@ -56,4 +67,5 @@ end
 word = pick_word(word_options).word
 player = Player.new
 game = Game.new(player, word)
-p game.compare_guess('a')
+p game.compare_guess
+p game.compare_guess
