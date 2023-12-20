@@ -31,10 +31,11 @@ class Game
     word.split('').length.times { @status += '_' }
   end
 
-  def compare_guess(word, guess)
-    word.split('').each do |letter|
-      put 'blank' if letter == guess
+  def compare_guess(guess)
+    word.each_char.with_index do |letter, index|
+      status[index] = guess if letter == guess
     end
+    status
   end
 end
 
@@ -55,4 +56,4 @@ end
 word = pick_word(word_options).word
 player = Player.new
 game = Game.new(player, word)
-puts game.status
+p game.compare_guess('a')
