@@ -8,8 +8,6 @@ dictionary.each do |word|
   word_options.push(word[0]) if word[0].length >= 5 && word[0].length <= 12
 end
 
-puts word_options
-
 # defines hangman word
 class Word
   attr_reader :word
@@ -19,6 +17,42 @@ class Word
   end
 end
 
-def pick_word(list)
-  Word.new(rand(0..list.length))
+# Rules of the game and running it
+class Game
+  attr_accessor :status
+  attr_reader :player, :word
+  attr_writer :guesses
+
+  def initialize(player, word)
+    @player = player
+    @word = word
+    @guesses = 0
+    @status = ''
+    word.split('').length.times { @status += '_' }
+  end
+
+  def compare_guess(word, guess)
+    word.split('').each do |letter|
+      put 'blank' if letter == guess
+    end
+  end
 end
+
+# defines Player ability to guess
+class Player
+  def initialize; end
+
+  def guess
+    p 'Pick a letter'
+    gets.chomp
+  end
+end
+
+def pick_word(list)
+  Word.new(list[rand(0..list.length)])
+end
+
+word = pick_word(word_options).word
+player = Player.new
+game = Game.new(player, word)
+puts game.status
