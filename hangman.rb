@@ -19,9 +19,8 @@ end
 
 # Rules of the game and running it
 class Game
-  attr_accessor :status
+  attr_accessor :status, :guesses
   attr_reader :player, :word
-  attr_writer :guesses
 
   def initialize(player, word)
     @player = player
@@ -37,6 +36,22 @@ class Game
       status[index] = guess if letter == guess
     end
     status
+  end
+
+  def win?
+    return 'You won!' if status == word
+
+    false
+  end
+
+  def play_game
+    while guesses < 6
+      p compare_guess
+      win?
+      self.guesses += 1
+    end
+    p word
+    p 'Better luck next time!'
   end
 end
 
@@ -67,5 +82,5 @@ end
 word = pick_word(word_options).word
 player = Player.new
 game = Game.new(player, word)
-p game.compare_guess
-p game.compare_guess
+p game.status
+game.play_game
