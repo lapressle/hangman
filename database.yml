@@ -1,0 +1,6 @@
+--- !ruby/object:Game
+player: !ruby/object:Player
+  guesses: []
+word: florida
+guesses: 0
+status: _______

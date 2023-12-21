@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'csv'
+require 'yaml'
 dictionary = CSV.open('google-10000-english-no-swears.txt')
 
 word_options = []
@@ -54,6 +55,12 @@ class Game
     p "The word was #{word}"
     p 'Better luck next time!'
   end
+
+  def save_game
+    File.open('database.yml', 'w') do |file|
+      file.write(YAML.dump(self))
+    end
+  end
 end
 
 # defines Player ability to guess
@@ -84,4 +91,5 @@ word = pick_word(word_options).word
 player = Player.new
 game = Game.new(player, word)
 p game.status
-game.play_game
+# game.play_game
+game.save_game
