@@ -95,3 +95,7 @@ game = Game.new(player, word)
 p game.status
 # game.play_game
 game.save_game
+
+# p YAML.load_file('database.yml', permitted_classes: [Game, Player, Word])
+yaml = YAML.load_stream(File.open('database.yml'))
+yaml[0].play_game

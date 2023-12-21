@@ -8,7 +8,35 @@ status: _______
 --- !ruby/object:Game
 player: !ruby/object:Player
   guesses: []
-word: changed
+word: bulletin
 guesses: 0
-status: _______
+status: ________
+
+--- !ruby/object:Game
+player: !ruby/object:Player
+  guesses: []
+word: alpha
+guesses: 0
+status: _____
+
+--- !ruby/object:Game
+player: !ruby/object:Player
+  guesses: []
+word: controller
+guesses: 0
+status: __________
+
+--- !ruby/object:Game
+player: !ruby/object:Player
+  guesses: []
+word: ringtones
+guesses: 0
+status: _________
+
+--- !ruby/object:Game
+player: !ruby/object:Player
+  guesses: []
+word: acute
+guesses: 0
+status: _____
 
