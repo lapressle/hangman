@@ -26,3 +26,19 @@ word: globe
 guesses: 1
 status: ____e
 
+--- !ruby/object:Game
+player: !ruby/object:Player
+  guesses:
+  - i
+word: intended
+guesses: 0
+status: i_______
+
+--- !ruby/object:Game
+player: !ruby/object:Player
+  guesses:
+  - o
+word: elephant
+guesses: 1
+status: ________
+

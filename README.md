@@ -1,1 +1,2 @@
 # hangman
+This code allows one to play the game hangman using a randomly picked word from the included file. OOP is used to help create a running game the player can save and come back to in future installations. The main purpose of this activity allows for the demonstration of competency with serialization and handling data using CSV methods.
