@@ -35,6 +35,7 @@ class Game
     word.each_char.with_index do |letter, index|
       status[index] = guess if letter == guess
     end
+    self.guesses += 1 unless word.include?(guess)
     status
   end
 
@@ -48,9 +49,9 @@ class Game
     while guesses < 6
       p compare_guess
       win?
-      self.guesses += 1
+      p "#{6 - guesses} guesses left!"
     end
-    p word
+    p "The word was #{word}"
     p 'Better luck next time!'
   end
 end
