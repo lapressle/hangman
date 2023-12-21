@@ -1,42 +1,28 @@
 --- !ruby/object:Game
 player: !ruby/object:Player
-  guesses: []
-word: ireland
-guesses: 0
-status: _______
+  guesses:
+  - a
+  - "y"
+word: brilliant
+guesses: 1
+status: ______a__
 
 --- !ruby/object:Game
 player: !ruby/object:Player
-  guesses: []
-word: bulletin
-guesses: 0
-status: ________
+  guesses:
+  - a
+  - "y"
+  - b
+word: brilliant
+guesses: 1
+status: b_____a__
 
 --- !ruby/object:Game
 player: !ruby/object:Player
-  guesses: []
-word: alpha
-guesses: 0
-status: _____
-
---- !ruby/object:Game
-player: !ruby/object:Player
-  guesses: []
-word: controller
-guesses: 0
-status: __________
-
---- !ruby/object:Game
-player: !ruby/object:Player
-  guesses: []
-word: ringtones
-guesses: 0
-status: _________
-
---- !ruby/object:Game
-player: !ruby/object:Player
-  guesses: []
-word: acute
-guesses: 0
-status: _____
+  guesses:
+  - i
+  - e
+word: globe
+guesses: 1
+status: ____e
 

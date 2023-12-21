@@ -41,7 +41,7 @@ class Game
   end
 
   def win?
-    return 'You won!' if status == word
+    return p 'You won!' if status == word
 
     false
   end
@@ -49,8 +49,11 @@ class Game
   def play_game
     while guesses < 6
       p compare_guess
-      win?
+      return if win?
+
       p "#{6 - guesses} guesses left!"
+      p 'Would you like to save (y/n)?'
+      return save_game if gets.chomp == 'y'
     end
     p "The word was #{word}"
     p 'Better luck next time!'
@@ -89,13 +92,38 @@ def pick_word(list)
   Word.new(list[rand(0..list.length)])
 end
 
-word = pick_word(word_options).word
-player = Player.new
-game = Game.new(player, word)
-p game.status
-# game.play_game
-game.save_game
+def on_loading(word_options)
+  p 'Would you like to load a previous game? (y/n)'
+  if gets.chomp == 'y'
+    load_game
+  else
+    game_start(word_options)
+  end
+end
 
-# p YAML.load_file('database.yml', permitted_classes: [Game, Player, Word])
-yaml = YAML.load_stream(File.open('database.yml'))
-yaml[0].play_game
+def load_game
+  yaml = YAML.load_stream(File.open('database.yml'))
+  input = pick_file(yaml) - 1
+  p yaml[input].status
+  yaml[input].play_game
+end
+
+def pick_file(options)
+  p "Pick a file # from 1 to #{options.length}"
+  file_number = gets.chomp.to_i
+  until file_number.is_a?(Integer) && file_number.between?(1, options.length)
+    p 'Try another #'
+    file_number = gets.chomp.to_i
+  end
+  file_number
+end
+
+def game_start(word_options)
+  word = pick_word(word_options).word
+  player = Player.new
+  game = Game.new(player, word)
+  p game.status
+  game.play_game
+end
+
+on_loading(word_options)
