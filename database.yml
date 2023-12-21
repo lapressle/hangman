@@ -1,6 +1,14 @@
 --- !ruby/object:Game
 player: !ruby/object:Player
   guesses: []
-word: florida
+word: ireland
 guesses: 0
 status: _______
+
+--- !ruby/object:Game
+player: !ruby/object:Player
+  guesses: []
+word: changed
+guesses: 0
+status: _______
+

@@ -57,8 +57,10 @@ class Game
   end
 
   def save_game
-    File.open('database.yml', 'w') do |file|
-      file.write(YAML.dump(self))
+    yaml = YAML.dump(self)
+    File.open('database.yml', 'a') do |file|
+      file.puts yaml
+      file.puts ''
     end
   end
 end
