@@ -66,10 +66,10 @@ class Player
 
   def guess
     p 'Pick a letter'
-    input = gets.chomp
-    until input.is_a?(String) && !guesses.include?(input)
+    input = gets.chomp.downcase
+    until input.is_a?(String) && !guesses.include?(input) && input.length == 1
       p 'try again'
-      input = gets.chomp
+      input = gets.chomp.downcase
     end
     guesses << input
     input
